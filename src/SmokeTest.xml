@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite1" verbose="1">
+    <test name="SmokeTest">
+        <classes>
+            <class name="OpenBrowserTest">
+                <methods>
+                    <include name="ValidData"/>
+                    <exclude name="InValidUsername"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

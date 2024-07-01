@@ -6,16 +6,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class OpenBrowser {
-    //psvm
-    /*
-    public static void main(String[] args) throws InterruptedException {
+public class OpenBrowserTest {
 
-
-        Thread.sleep(3000);
-
-    }
- */
 
     WebDriver driver = new ChromeDriver();
 
@@ -41,7 +33,7 @@ public class OpenBrowser {
         String actualResult = driver.findElement(By.xpath("//*[@id=\"flash\"]")).getText();
 
         Assert.assertTrue(actualResult.contains(expectedResult));
-        Thread.sleep(2000);
+        Thread.sleep(700);
 
     }
 
@@ -61,7 +53,7 @@ public class OpenBrowser {
         String actualResult = driver.findElement(By.xpath("//*[@id=\"flash\"]")).getText();
         Assert.assertTrue(actualResult.contains(expectedResult) , "Error : InValidUsername");
 
-        Thread.sleep(2000);
+        Thread.sleep(700);
     }
 
     @Test
@@ -80,7 +72,7 @@ public class OpenBrowser {
         String actualResult = driver.findElement(By.xpath("//*[@id=\"flash\"]")).getText();
         Assert.assertTrue(actualResult.contains(expectedResult));
 
-        Thread.sleep(2000);
+        Thread.sleep(700);
     }
 
     @AfterTest
