@@ -6,16 +6,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class OpenBrowser {
-    //psvm
-    /*
-    public static void main(String[] args) throws InterruptedException {
-
-
-        Thread.sleep(3000);
-
-    }
- */
+public class OpenBrowserTest {
 
     WebDriver driver = new ChromeDriver();
 
