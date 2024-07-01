@@ -65,7 +65,7 @@ public class OpenBrowser {
     }
 
     @Test
-    public void InValidPasswor() throws InterruptedException {
+    public void InValidPassword() throws InterruptedException {
         driver.navigate().to("https://the-internet.herokuapp.com/login");
 
         driver.findElement(By.xpath("//*[@id=\"username\"]")).clear();
