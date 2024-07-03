@@ -5,7 +5,7 @@
             <class name="OpenBrowserTest">
                 <methods>
                     <include name="ValidData"/>
-                    <exclude name="InValidUsername"/>
+                    <exclude name="InValidPassword"/>
                 </methods>
             </class>
         </classes>

@@ -3,9 +3,6 @@
     <test name="Regression1">
         <classes>
             <class name="OpenBrowserTest">
-                <methods>
-
-                </methods>
             </class>
         </classes>
     </test> <!-- Test -->

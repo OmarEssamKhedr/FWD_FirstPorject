@@ -42,7 +42,7 @@ public class OpenBrowserTest {
         driver.navigate().to("https://the-internet.herokuapp.com/login");
 
         driver.findElement(By.xpath("//*[@id=\"username\"]")).clear();
-        driver.findElement(By.xpath("//*[@id=\"username\"]")).sendKeys("inValid");
+        driver.findElement(By.xpath("//*[@id=\"username\"]")).sendKeys("MyLoveFatema");
 
         driver.findElement(By.xpath("//*[@id=\"password\"]")).clear();
         driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("SuperSecretPassword!");
@@ -57,7 +57,7 @@ public class OpenBrowserTest {
     }
 
     @Test
-    public void InValidPasswordd() throws InterruptedException {
+    public void InValidPassword() throws InterruptedException {
         driver.navigate().to("https://the-internet.herokuapp.com/login");
 
         driver.findElement(By.xpath("//*[@id=\"username\"]")).clear();
@@ -74,6 +74,16 @@ public class OpenBrowserTest {
 
         Thread.sleep(700);
     }
+
+    @Test
+    public void ValidPasswordR() throws InterruptedException {
+        driver.navigate().to("https://the-internet.herokuapp.com/inputs");
+
+        driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div/input")).clear();
+        driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div/input")).sendKeys("123");
+        Thread.sleep(500);
+    }
+
 
     @AfterTest
     public void Closeddriver(){
