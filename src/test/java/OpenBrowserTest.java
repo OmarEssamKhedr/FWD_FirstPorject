@@ -10,27 +10,26 @@ public class OpenBrowserTest {
 
 
     WebDriver driver = new ChromeDriver();
+    LoginPage login = new LoginPage(driver);
+
+
+
 
     @BeforeTest
     public void OpenBrowser(){
-
         driver.navigate().to("https://the-internet.herokuapp.com/login");
         driver.manage().window().maximize();
     }
+
+
     @Test
     public void ValidData() throws InterruptedException {
         driver.navigate().to("https://the-internet.herokuapp.com/login");
 
-        driver.findElement(By.xpath("//*[@id=\"username\"]")).clear();
-        driver.findElement(By.xpath("//*[@id=\"username\"]")).sendKeys("tomsmith");
-
-        driver.findElement(By.xpath("//*[@id=\"password\"]")).clear();
-        driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("SuperSecretPassword!");
-
-        driver.findElement(By.xpath("//*[@id=\"login\"]/button/i")).click();
+        login.LoginSteps("tomsmith","SuperSecretPassword!");
 
         String expectedResult = "You logged into a secure area!";
-        String actualResult = driver.findElement(By.xpath("//*[@id=\"flash\"]")).getText();
+        String actualResult = login.MessagePOM().getText();
 
         Assert.assertTrue(actualResult.contains(expectedResult));
         Thread.sleep(700);
@@ -41,16 +40,10 @@ public class OpenBrowserTest {
     public void InValidUsername() throws InterruptedException {
         driver.navigate().to("https://the-internet.herokuapp.com/login");
 
-        driver.findElement(By.xpath("//*[@id=\"username\"]")).clear();
-        driver.findElement(By.xpath("//*[@id=\"username\"]")).sendKeys("MyLoveFatema");
-
-        driver.findElement(By.xpath("//*[@id=\"password\"]")).clear();
-        driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("SuperSecretPassword!");
-
-        driver.findElement(By.xpath("//*[@id=\"login\"]/button/i")).click();
+        login.LoginSteps("MyLoveFatema","SuperSecretPassword!");
 
         String expectedResult = "Your username is invalid!";
-        String actualResult = driver.findElement(By.xpath("//*[@id=\"flash\"]")).getText();
+        String actualResult = login.MessagePOM().getText();
         Assert.assertTrue(actualResult.contains(expectedResult) , "Error : InValidUsername");
 
         Thread.sleep(700);
@@ -60,33 +53,17 @@ public class OpenBrowserTest {
     public void InValidPassword() throws InterruptedException {
         driver.navigate().to("https://the-internet.herokuapp.com/login");
 
-        driver.findElement(By.xpath("//*[@id=\"username\"]")).clear();
-        driver.findElement(By.xpath("//*[@id=\"username\"]")).sendKeys("tomsmith");
-
-        driver.findElement(By.xpath("//*[@id=\"password\"]")).clear();
-        driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("inValid!");
-
-        driver.findElement(By.xpath("//*[@id=\"login\"]/button/i")).click();
+        login.LoginSteps("tomsmith","BadPassword");
 
         String expectedResult = "Your password is invalid!";
-        String actualResult = driver.findElement(By.xpath("//*[@id=\"flash\"]")).getText();
+        String actualResult = login.MessagePOM().getText();
         Assert.assertTrue(actualResult.contains(expectedResult));
 
         Thread.sleep(700);
     }
 
-    @Test
-    public void ValidPasswordR() throws InterruptedException {
-        driver.navigate().to("https://the-internet.herokuapp.com/inputs");
-
-        driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div/input")).clear();
-        driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div/input")).sendKeys("123");
-        Thread.sleep(500);
-    }
-
-
     @AfterTest
-    public void Closeddriver(){
+    public void ClosedDriver(){
         driver.quit();
     }
 }
