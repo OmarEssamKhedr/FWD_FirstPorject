@@ -53,7 +53,7 @@ public class OpenBrowserTest {
     public void InValidPassword() throws InterruptedException {
         driver.navigate().to("https://the-internet.herokuapp.com/login");
 
-        login.LoginSteps("tomsmith","BadPassword");
+        login.LoginSteps("tomsmith","BaddPassword");
 
         String expectedResult = "Your password is invalid!";
         String actualResult = login.MessagePOM().getText();
